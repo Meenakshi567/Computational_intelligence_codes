@@ -1,0 +1,112 @@
+CL-USER 1 > (calculator)
+
+Simple Calculator
+1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+Enter your choice (1-4): 1
+Enter first number: 5
+Enter second number: 10
+
+Result = 15
+NIL
+
+CL-USER 2 > (calculator)
+
+Simple Calculator
+1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+Enter your choice (1-4): 2
+Enter first number: 5
+Enter second number: 2
+
+Result = 3
+NIL
+
+CL-USER 3 > (string-operations)
+
+Enter a string: Mepco
+
+Length of string = 5
+Reversed string = ocpeM
+The string is NOT a Palindrome
+NIL
+
+CL-USER 4 > (string-operations)
+
+Enter a string: racecar
+
+Length of string = 7
+Reversed string = racecar
+The string is a Palindrome
+NIL
+
+CL-USER 5 > (square-calculations)
+
+Enter the side of the square: 21
+
+Area of square = 441
+Perimeter of square = 84
+NIL
+
+(defun calculator ()
+  (format t "~%Simple Calculator")
+  (format t "~%1. Addition")
+  (format t "~%2. Subtraction")
+  (format t "~%3. Multiplication")
+  (format t "~%4. Division")
+  
+  (format t "~%Enter your choice (1-4): ")
+  (setq choice (read))
+  
+  (format t "Enter first number: ")
+  (setq a (read))
+  
+  (format t "Enter second number: ")
+  (setq b (read))
+  
+  (cond
+    ((= choice 1) (format t "~%Result = ~a" (+ a b)))
+    ((= choice 2) (format t "~%Result = ~a" (- a b)))
+    ((= choice 3) (format t "~%Result = ~a" (* a b)))
+    ((= choice 4) 
+     (if (/= b 0)
+         (format t "~%Result = ~a" (/ a b))
+         (format t "~%Error: Division by zero")))
+    (t (format t "~%Invalid choice")))
+)
+
+(defun string-operations ()
+  (format t "~%Enter a string: ")
+  (setq str (read-line))
+
+  ;; Find length
+  (setq len (length str))
+  (format t "~%Length of string = ~a" len)
+
+  ;; Reverse string
+  (setq rev (reverse (coerce str 'list)))
+  (setq rev-str (coerce rev 'string))
+  (format t "~%Reversed string = ~a" rev-str)
+
+  ;; Palindrome check
+  (if (string= str rev-str)
+      (format t "~%The string is a Palindrome")
+      (format t "~%The string is NOT a Palindrome"))
+)
+(defun square-calculations ()
+  (format t "~%Enter the side of the square: ")
+  (setq side (read))
+
+  ;; Calculate area and perimeter
+  (setq area (* side side))
+  (setq perimeter (* 4 side))
+
+  ;; Display results
+  (format t "~%Area of square = ~a" area)
+  (format t "~%Perimeter of square = ~a" perimeter)
+)
+

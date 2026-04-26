@@ -1,0 +1,21 @@
+(defun string-operations ()
+  (format t "~%Enter a string: ")
+  (setq str (read-line))
+
+  ;; Find length
+  (setq len (length str))
+  (format t "~%Length of string = ~a" len)
+
+  ;; Reverse string
+  (setq rev (reverse (coerce str 'list)))
+  (setq rev-str (coerce rev 'string))
+  (format t "~%Reversed string = ~a" rev-str)
+
+  ;; Palindrome check
+  (if (string= str rev-str)
+      (format t "~%The string is a Palindrome")
+      (format t "~%The string is NOT a Palindrome"))
+)
+
+;; Call the function
+(string-operations)

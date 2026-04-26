@@ -1,0 +1,27 @@
+(defun calculator ()
+  (format t "~%Simple Calculator")
+  (format t "~%1. Addition")
+  (format t "~%2. Subtraction")
+  (format t "~%3. Multiplication")
+  (format t "~%4. Division")
+  
+  (format t "~%Enter your choice (1-4): ")
+  (setq choice (read))
+  
+  (format t "Enter first number: ")
+  (setq a (read))
+  
+  (format t "Enter second number: ")
+  (setq b (read))
+  
+  (cond
+    ((= choice 1) (format t "~%Result = ~a" (+ a b)))
+    ((= choice 2) (format t "~%Result = ~a" (- a b)))
+    ((= choice 3) (format t "~%Result = ~a" (* a b)))
+    ((= choice 4) 
+     (if (/= b 0)
+         (format t "~%Result = ~a" (/ a b))
+         (format t "~%Error: Division by zero")))
+    (t (format t "~%Invalid choice")))
+)
+

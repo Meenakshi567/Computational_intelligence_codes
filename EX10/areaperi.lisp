@@ -1,0 +1,13 @@
+(defun square-calculations ()
+  (format t "~%Enter the side of the square: ")
+  (setq side (read))
+
+  ;; Calculate area and perimeter
+  (setq area (* side side))
+  (setq perimeter (* 4 side))
+
+  ;; Display results
+  (format t "~%Area of square = ~a" area)
+  (format t "~%Perimeter of square = ~a" perimeter)
+)
+
